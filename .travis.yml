@@ -4,10 +4,6 @@ matrix:
     - os: linux
       dist: trusty
       sudo: false
-      node_js: "4"
-    - os: linux
-      dist: trusty
-      sudo: false
       node_js: "6"
     - os: linux
       dist: trusty
@@ -17,17 +13,15 @@ matrix:
       dist: trusty
       sudo: false
       node_js: "10"
+  allow_failures:
     - os: osx
-      osx_image: xcode8.3
-      node_js: "4"
-    - os: osx
-      osx_image: xcode8.3
+      osx_image: xcode9.2
       node_js: "6"
     - os: osx
-      osx_image: xcode8.3
+      osx_image: xcode9.2
       node_js: "8"
     - os: osx
-      osx_image: xcode8.3
+      osx_image: xcode9.2
       node_js: "10"
 after_success:
   - npm install coveralls

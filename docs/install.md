@@ -15,7 +15,7 @@ yarn add sharp
 ### Building from source
 
 Pre-compiled binaries for sharp are provided for use with
-Node versions 4, 6, 8 and 10 on
+Node versions 6, 8 and 10 on
 64-bit Windows, OS X and Linux platforms.
 
 Sharp will be built from source at install time when:
@@ -36,7 +36,7 @@ Building from source requires:
 [![Ubuntu 16.04 Build Status](https://travis-ci.org/lovell/sharp.png?branch=master)](https://travis-ci.org/lovell/sharp)
 
 libvips and its dependencies are fetched and stored within `node_modules/sharp/vendor` during `npm install`.
-This involves an automated HTTPS download of approximately 7MB.
+This involves an automated HTTPS download of approximately 8MB.
 
 Most recent Linux-based operating systems with glibc running on x64 and ARMv6+ CPUs should "just work", e.g.:
 
@@ -94,7 +94,7 @@ that it can be located using `pkg-config --modversion vips-cpp`.
 [![Windows x64 Build Status](https://ci.appveyor.com/api/projects/status/pgtul704nkhhg6sg)](https://ci.appveyor.com/project/lovell/sharp)
 
 libvips and its dependencies are fetched and stored within `node_modules\sharp\vendor` during `npm install`.
-This involves an automated HTTPS download of approximately 12MB.
+This involves an automated HTTPS download of approximately 13MB.
 
 Only 64-bit (x64) `node.exe` is supported.
 
@@ -154,10 +154,10 @@ can be built using Docker.
 
 ```sh
 rm -rf node_modules/sharp
-docker run -v "$PWD":/var/task lambci/lambda:build-nodejs6.10 npm install
+docker run -v "$PWD":/var/task lambci/lambda:build-nodejs8.10 npm install
 ```
 
-Set the Lambda runtime to Node.js 6.10.
+Set the Lambda runtime to Node.js 8.10.
 
 To get the best performance select the largest memory available. A 1536 MB function provides ~12x more CPU time than a 128 MB function.
 
@@ -198,28 +198,6 @@ Whilst tools such as [American Fuzzy Lop](http://lcamtuf.coredump.cx/afl/)
 and [Valgrind](http://valgrind.org/) have been used to test
 the most popular web-based formats, as well as libvips itself,
 you are advised to perform your own testing and sandboxing.
-
-ImageMagick in particular has a relatively large attack surface,
-which can be partially mitigated with a
-[policy.xml](http://www.imagemagick.org/script/resources.php)
-configuration file to prevent the use of coders known to be vulnerable.
-
-```xml
-<policymap>
-  <policy domain="coder" rights="none" pattern="EPHEMERAL" />
-  <policy domain="coder" rights="none" pattern="URL" />
-  <policy domain="coder" rights="none" pattern="HTTPS" />
-  <policy domain="coder" rights="none" pattern="MVG" />
-  <policy domain="coder" rights="none" pattern="MSL" />
-  <policy domain="coder" rights="none" pattern="TEXT" />
-  <policy domain="coder" rights="none" pattern="SHOW" />
-  <policy domain="coder" rights="none" pattern="WIN" />
-  <policy domain="coder" rights="none" pattern="PLT" />
-</policymap>
-```
-
-Set the `MAGICK_CONFIGURE_PATH` environment variable
-to the directory containing the `policy.xml` file.
 
 ### Pre-compiled libvips binaries
 
@@ -265,6 +243,7 @@ Use of libraries under the terms of the LGPLv3 is via the
 | expat         | MIT Licence                                                                                              |
 | fontconfig    | [fontconfig Licence](https://cgit.freedesktop.org/fontconfig/tree/COPYING) (BSD-like)                    |
 | freetype      | [freetype Licence](http://git.savannah.gnu.org/cgit/freetype/freetype2.git/tree/docs/FTL.TXT) (BSD-like) |
+| fribidi       | LGPLv3                                                                                                   |
 | giflib        | MIT Licence                                                                                              |
 | glib          | LGPLv3                                                                                                   |
 | harfbuzz      | MIT Licence                                                                                              |

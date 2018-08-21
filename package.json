@@ -89,9 +89,9 @@
     "nan": "^2.10.0",
     "fs-copy-file-sync": "^1.1.1",
     "npmlog": "^4.1.2",
-    "prebuild-install": "^4.0.0",
+    "prebuild-install": "^5.0.0",
     "semver": "^5.5.1",
-    "simple-get": "^2.8.1",
+    "simple-get": "^3.0.3",
     "tar": "^4.4.6",
     "tunnel-agent": "^0.6.0"
   },
@@ -111,10 +111,10 @@
   },
   "license": "Apache-2.0",
   "config": {
-    "libvips": "8.6.1"
+    "libvips": "8.7.0"
   },
   "engines": {
-    "node": ">=4.5.0"
+    "node": ">=6"
   },
   "semistandard": {
     "env": [
